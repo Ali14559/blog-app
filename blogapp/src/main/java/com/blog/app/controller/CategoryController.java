@@ -37,7 +37,7 @@ public class CategoryController {
     @SecurityRequirement(
             name = "Bearer Authentication"
     )
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/addcategory")
     public ResponseEntity<CategoryDto>addCategory(@RequestBody CategoryDto categoryDto){
         CategoryDto saveCatDto = categoryService.addCategory(categoryDto);
@@ -88,7 +88,7 @@ public class CategoryController {
     @SecurityRequirement(
             name = "Bearer Authentication"
     )
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     // Build Update Category REST API
     @PutMapping("/updatecategory/{id}")
     public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto categoryDto,
@@ -108,7 +108,7 @@ public class CategoryController {
             name = "Bearer Authentication"
     )
     // Build Delete Category REST API
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
 
     @DeleteMapping("/deletecategory/{id}")
     public ResponseEntity<String> deleteCategory(@PathVariable("id") Long categoryId){
