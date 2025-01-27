@@ -37,7 +37,7 @@ public class PostController {
     @SecurityRequirement(
             name = "Bearer Authentication"
     )
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/addpost")
     public ResponseEntity<PostDto> createPost(@Valid @RequestBody PostDto postDto){
         return new  ResponseEntity<>(postService.createPost(postDto), HttpStatus.CREATED);
@@ -89,7 +89,7 @@ public class PostController {
     @SecurityRequirement(
             name = "Bearer Authentication"
     )
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/updatepost/{id}")
     public ResponseEntity<PostDto>updatePost(@PathVariable Long id,@Valid @RequestBody PostDto postDto){
        PostDto postDto1 =  postService.updatePost(id, postDto);
@@ -108,7 +108,7 @@ public class PostController {
     @SecurityRequirement(
             name = "Bearer Authentication"
     )
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/deletepost/{id}")
     public ResponseEntity<String>deletePost(@PathVariable Long id){
        postService.deletePost(id);
